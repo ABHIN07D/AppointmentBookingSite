@@ -27,28 +27,28 @@ function AppointmentForm() {
   useEffect(() => {}, [patients]);
 
   function validate() {
-    let tempErrors = {};
+    let error = {};
 
     if (!patient.patientName || patient.patientName.trim() === "") {
-      tempErrors.patientName = "Name is required";
+      error.patientName = "Name is required";
     }
 
     if (!patient.patientAge) {
-      tempErrors.patientAge = "Age is required";
+      error.patientAge = "Age is required";
     } else if (isNaN(patient.patientAge)) {
-      tempErrors.patientAge = "Age must be a number";
+      error.patientAge = "Age must be a number";
     }
 
     if (!patient.patientPlace || patient.patientPlace.trim() === "") {
-      tempErrors.patientPlace = "Place is required";
+      error.patientPlace = "Place is required";
     }
 
     if (!patient.doctorName) {
-      tempErrors.doctorName = "Please select a doctor";
+      error.doctorName = "Please select a doctor";
     }
 
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
+    setErrors(error);
+    return Object.keys(error).length === 0;
   }
 
   function handleSubmit(event) {
