@@ -35,7 +35,9 @@ function AppointmentForm() {
 
     if (!patient.patientAge) {
       error.patientAge = "Age is required";
-    } 
+    } else if (isNaN(patient.patientAge)) {
+      error.patientAge = "Age must be a number";
+    }
 
     if (!patient.patientPlace || patient.patientPlace.trim() === "") {
       error.patientPlace = "Place is required";
@@ -123,7 +125,7 @@ function AppointmentForm() {
             <Form.Group>
               <Form.Label>Age :</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 name="patientAge"
                 value={patient.patientAge || ""}
                 onChange={handleChange}
